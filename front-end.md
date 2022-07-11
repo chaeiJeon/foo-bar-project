@@ -47,7 +47,7 @@ pnpm install
 
 - 백엔드 주소 >
     - REST
-        - url: http://35.86.170.223:3000/rest
+        - url: http://35.89.152.14:3000/rest
           - (POST) /rest/auth/sign-in
             - req.body {email: '<string>', password: '<string>'} 
             - res 401 {email: '<string>'}
@@ -63,7 +63,7 @@ pnpm install
             - res 401 {email: '<string>'}
             - res 200 {email: '<string>'}
     - GraphQl
-        - url: http://35.86.170.223:3000/graphql
+        - url: http://35.89.152.14:3000/graphql
         - playground: http://35.86.170.223:3000/graphql
 
 미리 설치된 컴포넌트 세트 라이브러리
