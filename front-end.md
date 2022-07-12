@@ -58,7 +58,7 @@ pnpm install
             - res 409 {email: '<string>'}
             - res 201 {email: '<string>', name: '<string>', token: '<string>'}
           - (PATCH) /rest/auth/update-password
-            - req.body {password: '<string>', newPassword: '<string>'}
+            - req.body {password: '<string>', newPassword: '<string>'} req.header {Authorization: '<jwt token>'}
             - res 404 {email: '<string>'}
             - res 401 {email: '<string>'}
             - res 200 {email: '<string>'}
