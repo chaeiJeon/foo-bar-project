@@ -65,6 +65,8 @@ pnpm install
     - GraphQl
         - url: http://35.89.152.14:3000/graphql
         - playground: http://35.89.152.14:3000/graphql
+  
+   > 모든 주소에 만약 jwt 토큰이 필요하다면 header Authorization key 를 사용 합니다 (Bearer Authentication)
 
 미리 설치된 컴포넌트 세트 라이브러리
 
