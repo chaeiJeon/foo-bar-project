@@ -47,7 +47,7 @@ pnpm install
 
 - 백엔드 주소 >
     - REST
-        - url: http://35.89.152.14:3000/rest
+        - url: http://playground-719591487.us-west-2.elb.amazonaws.com/rest
           - (POST) /rest/auth/sign-in
             - req.body {email: '<string>', password: '<string>'} 
             - res 401 {email: '<string>'}
@@ -63,8 +63,8 @@ pnpm install
             - res 401 {email: '<string>'}
             - res 200 {email: '<string>'}
     - GraphQl
-        - url: http://35.89.152.14:3000/graphql
-        - playground: http://35.89.152.14:3000/graphql
+        - url: http://playground-719591487.us-west-2.elb.amazonaws.com/graphql
+        - playground: http://playground-719591487.us-west-2.elb.amazonaws.com/graphql
   
    > 모든 주소에 만약 jwt 토큰이 필요하다면 header Authorization key 를 사용 합니다 (Bearer Authentication)
 
