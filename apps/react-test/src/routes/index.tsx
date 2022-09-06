@@ -5,6 +5,8 @@ const MainLayout = lazy(() => import('layouts/main-layout/Index'))
 const Main = lazy(() => import('pages/Main'))
 const SignIn = lazy(() => import('src/pages/SignIn'))
 const SignUp = lazy(() => import('src/pages/SignUp'))
+const MyPage = lazy(() => import('src/pages/Mypage'))
+const UpdatePassword = lazy(() => import('src/pages/UpdatePassword'))
 
 export const routes: RouteObject[] = [
   {
@@ -20,6 +22,14 @@ export const routes: RouteObject[] = [
       {
         element: <SignUp />,
         path: 'signUp',
+      },
+      {
+        element: <UpdatePassword />,
+        path: 'updatePassword',
+      },
+      {
+        element: <MyPage />,
+        path: 'myPage',
       },
     ],
     element: <MainLayout />,
