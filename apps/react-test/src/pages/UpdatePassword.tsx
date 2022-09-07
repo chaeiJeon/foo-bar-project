@@ -27,15 +27,14 @@ export const UpdatePassword: FPC = () => {
     const name = event.target.name
     const value = event.target.value
     if (name === 'oldPassword') setOldPassword(value)
-    else if (name === 'password') setNewPassword(value)
-    else if (name === 'password2') setNewPassword2(value)
+    else if (name === 'newPassword') setNewPassword(value)
+    else if (name === 'newPassword2') setNewPassword2(value)
   }
   function updatePassword({
     oldPassword,
     newPassword,
     newPassword2,
   }: SignInProps) {
-    console.log(oldPassword, newPassword, newPassword2)
     if (oldPassword === '') {
       notify('기존 패스워드를 입력하세요')
       return
@@ -48,11 +47,15 @@ export const UpdatePassword: FPC = () => {
       notify('입력한 패스워드가 일치하지 않습니다')
       return
     }
+    const token = localStorage.getItem('token')
     fetch(
       'http://playground-719591487.us-west-2.elb.amazonaws.com/rest/auth/update-password',
       {
         method: 'PATCH',
-        headers: {'Content-Type': 'application/json', Authorization: ''},
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
         body: JSON.stringify({
           password: oldPassword,
           newPassword: newPassword,
@@ -64,8 +67,7 @@ export const UpdatePassword: FPC = () => {
       } else if (response.status === 401) {
         notify('401 error')
       } else if (response.status === 200) {
-        console.log('success')
-        // navigate('/myPage')
+        navigate('/myPage')
       }
     })
   }
@@ -75,6 +77,7 @@ export const UpdatePassword: FPC = () => {
       <Center>
         <Input
           name="oldPassword"
+          type="password"
           placeholder="Password"
           onChange={changeInput}
         ></Input>
@@ -102,9 +105,9 @@ export const UpdatePassword: FPC = () => {
         <Button
           onClick={() =>
             updatePassword({
-              oldPassword: oldPassword,
-              newPassword: newPassword,
-              newPassword2: newPassword2,
+              oldPassword,
+              newPassword,
+              newPassword2,
             })
           }
         >
@@ -115,3 +118,5 @@ export const UpdatePassword: FPC = () => {
     </>
   )
 }
+
+export default UpdatePassword

@@ -2,7 +2,12 @@ import {FC} from 'react'
 import styled from 'styled-components'
 import {NavLink} from 'react-router-dom'
 
-const Center = styled.div``
+export const Center = styled.div`
+  height: 100vh;
+  max-width: 375px;
+  margin: 0 auto;
+  margin-top: 250px;
+`
 
 export const MainPage: FC = () => {
   return (

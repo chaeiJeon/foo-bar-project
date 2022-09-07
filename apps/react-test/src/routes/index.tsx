@@ -25,7 +25,7 @@ export const routes: RouteObject[] = [
       },
       {
         element: <UpdatePassword />,
-        path: 'updatePassword',
+        path: '/updatePassword',
       },
       {
         element: <MyPage />,

@@ -1,4 +1,3 @@
-// import Logo from '../../public/images/Logo.png'
 import styled from 'styled-components'
 
 const Background = styled.div`
@@ -14,7 +13,7 @@ const Background = styled.div`
 export const Base = () => {
   return (
     <>
-      <Background>{/* <img src={Logo} /> */}</Background>
+      <Background></Background>
     </>
   )
 }
