@@ -11,7 +11,6 @@ const Center = styled.div`
   margin: 0 auto;
 `
 const notify = (text: string) => {
-  console.log(text)
   toast.error(text)
 }
 type SignInProps = {
@@ -32,7 +31,6 @@ export const SignUpPage: FPC = () => {
     else if (name === 'password2') setPassword2(value)
   }
   function SignUp({email, password, password2}: SignInProps) {
-    console.log(email, password, password2)
     if (email === '') {
       notify('이메일을 입력하세요')
       return
@@ -51,19 +49,24 @@ export const SignUpPage: FPC = () => {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
-          email: email,
-          password: password,
+          email,
+          password,
         }),
       },
-    ).then((response) => {
-      if (response.status === 404) {
-        notify('404 not found')
-      } else if (response.status === 409) {
-        notify('409 error')
-      } else if (response.status === 201) {
-        navigate('/myPage')
-      }
-    })
+    )
+      .then((response) => {
+        if (response.status === 404) {
+          notify('404 not found')
+        } else if (response.status === 409) {
+          notify('409 error')
+        } else if (response.status === 201) {
+          navigate('/myPage')
+          return response.json()
+        }
+      })
+      .then((data) => {
+        localStorage.setItem('token', data.token)
+      })
   }
   return (
     <>
@@ -91,11 +94,7 @@ export const SignUpPage: FPC = () => {
         ></Input>
         <Text>확인을 위해 한번더 입력해 주세요</Text>
 
-        <Button
-          onClick={() =>
-            SignUp({email: email, password: password, password2: password2})
-          }
-        >
+        <Button onClick={() => SignUp({email, password, password2})}>
           SIGN UP
         </Button>
       </Center>
